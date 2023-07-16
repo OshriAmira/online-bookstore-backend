@@ -3,7 +3,7 @@ package service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import controller.NotFoundException;
@@ -15,7 +15,7 @@ public class CartItemService {
 
     private final CartItemRepository cartItemRepository;
 
-    @Autowired
+   //@Autowired
     public CartItemService(CartItemRepository cartItemRepository) {
         this.cartItemRepository = cartItemRepository;
     }

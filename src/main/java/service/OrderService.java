@@ -1,6 +1,6 @@
 package service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import controller.NotFoundException;
 import model.Order;
@@ -11,7 +11,7 @@ public class OrderService {
 	
     private final OrderRepository orderRepository;
 
-    @Autowired
+    //@Autowired
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }

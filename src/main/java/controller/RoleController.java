@@ -3,7 +3,7 @@ package controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,7 @@ public class RoleController {
 
     private final RoleRepository roleRepository;
 
-    @Autowired
+    //@Autowired
     public RoleController(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }

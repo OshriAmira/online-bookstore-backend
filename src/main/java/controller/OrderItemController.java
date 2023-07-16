@@ -1,6 +1,6 @@
 package controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,7 +19,7 @@ public class OrderItemController {
 	
     private final OrderItemRepository orderItemRepository;
 
-    @Autowired
+    //@Autowired
     public OrderItemController(OrderItemRepository orderItemRepository) {
         this.orderItemRepository = orderItemRepository;
     }

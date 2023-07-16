@@ -1,6 +1,6 @@
 package service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.ShoppingCartRepository;
 import model.ShoppingCart;
@@ -13,7 +13,7 @@ public class ShoppingCartService {
 
     private final ShoppingCartRepository shoppingCartRepository;
 
-    @Autowired
+    //@Autowired
     public ShoppingCartService(ShoppingCartRepository shoppingCartRepository) {
         this.shoppingCartRepository = shoppingCartRepository;
     }

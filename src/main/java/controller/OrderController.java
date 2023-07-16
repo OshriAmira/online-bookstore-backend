@@ -5,7 +5,7 @@ import java.util.List;
 import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +30,7 @@ public class OrderController {
 	
     private final OrderRepository orderRepository;
 
-    @Autowired
+    //@Autowired
     public OrderController(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }

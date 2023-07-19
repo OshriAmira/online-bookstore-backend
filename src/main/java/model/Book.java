@@ -58,9 +58,7 @@ public class Book {
     // Constructors, getters, and setters
 	
 
-	public Long getId() {
-        return id;
-    }
+
 	
 	public Book() {
         // Default constructor
@@ -79,6 +77,10 @@ public class Book {
 		this.orderItems = orderItems;
 		this.image = image;
 	}
+	
+	public Long getId() {
+        return id;
+    }
 
 	public void setId(Long id) {
         this.id = id;

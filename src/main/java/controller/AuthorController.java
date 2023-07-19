@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,35 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import model.Author;
 import service.AuthorService;
-import repository.AuthorRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/authors")
 public class AuthorController {
     
-	private final AuthorRepository authorRepository;
+
 	private final AuthorService authorService;
     
-	public AuthorController(AuthorService authorService, AuthorRepository authorRepository) { // Modify the constructor
+	public AuthorController(AuthorService authorService) { 
         this.authorService = authorService;
-        this.authorRepository = authorRepository; 
     }
-    
-//    public AuthorController(AuthorService authorService) {
-//        this.authorService = authorService;
-//    }
-    
-//    @PostMapping("/authors")
-//    public ResponseEntity<Author> createAuthor(@RequestBody Author nameAuthor) {
-//        Author author = authorService.createAuthor(nameAuthor);
-//        return ResponseEntity.ok(author);
-//    }
-    @PostMapping("/authors")
-    public Author createAuthor(@RequestBody Author nameAuthor) {
-        Author author = new Author(nameAuthor.getName());
-        return authorRepository.save(author);
+	
+    @PostMapping
+    @PreAuthorize("permitAll()")
+    public ResponseEntity<Author> createAuthor(@RequestBody String nameAuthor) {
+        Author author = authorService.createAuthor(nameAuthor);
+        return ResponseEntity.ok(author);
     }
+
     
     @GetMapping("/{id}")
     public ResponseEntity<Author> findAuthorById(@PathVariable Long id) {

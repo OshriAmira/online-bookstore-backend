@@ -15,7 +15,8 @@ public class CustomSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
-                .and().csrf().disable()
+                .and()
+            .csrf().disable()
             .formLogin()
                 .loginPage("/login")
                 .permitAll();

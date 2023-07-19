@@ -17,8 +17,8 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
     
-    public Author createAuthor(String name) {
-        Author author = new Author(name);
+    public Author createAuthor(Author nameAuthor) {
+        Author author = new Author(nameAuthor.getName());
         return authorRepository.save(author);
     }
 

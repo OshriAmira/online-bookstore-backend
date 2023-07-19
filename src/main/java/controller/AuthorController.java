@@ -15,22 +15,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import model.Author;
 import service.AuthorService;
+import repository.AuthorRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/authors")
 public class AuthorController {
     
-    private final AuthorService authorService;
+	private final AuthorRepository authorRepository;
+	private final AuthorService authorService;
     
-    public AuthorController(AuthorService authorService) {
+	public AuthorController(AuthorService authorService, AuthorRepository authorRepository) { // Modify the constructor
         this.authorService = authorService;
+        this.authorRepository = authorRepository; 
     }
     
+//    public AuthorController(AuthorService authorService) {
+//        this.authorService = authorService;
+//    }
+    
+//    @PostMapping("/authors")
+//    public ResponseEntity<Author> createAuthor(@RequestBody Author nameAuthor) {
+//        Author author = authorService.createAuthor(nameAuthor);
+//        return ResponseEntity.ok(author);
+//    }
     @PostMapping("/authors")
-    public ResponseEntity<Author> createAuthor(@RequestBody String name) {
-        Author author = authorService.createAuthor(name);
-        return ResponseEntity.ok(author);
+    public Author createAuthor(@RequestBody Author nameAuthor) {
+        Author author = new Author(nameAuthor.getName());
+        return authorRepository.save(author);
     }
     
     @GetMapping("/{id}")

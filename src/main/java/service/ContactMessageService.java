@@ -1,5 +1,8 @@
 package service;
 
+import java.util.List;
+
+
 import org.springframework.stereotype.Service;
 
 import model.ContactMessage;
@@ -18,5 +21,17 @@ public class ContactMessageService {
         // Save the message in the database
         return messageRepository.save(message);
     }
+    
+	
+    public List<ContactMessage> getAllContactMessage() {
+        return messageRepository.findAll();
+    }
+    
+    public void deleteContactMessage(Long id) {
+    	messageRepository.deleteById(id);
+    }
+    
+    
+    
 }
 

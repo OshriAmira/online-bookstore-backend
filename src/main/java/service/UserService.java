@@ -17,6 +17,14 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+    
+    public Boolean LoginAttempt(String email, String password) {
+    	User user = userRepository.findByEmail(email);
+    	if (user.getPassword().equals(password))
+    		return true;
+    		else
+    			return false;
+    }
 
     public User save(User user) {
         return userRepository.save(user);

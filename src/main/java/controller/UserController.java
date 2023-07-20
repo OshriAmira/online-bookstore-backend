@@ -38,6 +38,15 @@ public class UserController {
                 .collect(Collectors.toList());
     }
     
+//    @PostMapping("/login")
+//    public Boolean LoginAttempt(@RequestBody String email, String password) {
+//    	User user = userRepository.findByEmail(email);
+//    	if (user.getPassword().equals(password))
+//    		return true;
+//    		else
+//    			return false;
+//    }
+    
     @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable Long id) {
     	User user = userRepository.findById(id)

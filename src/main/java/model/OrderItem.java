@@ -79,7 +79,7 @@ public class OrderItem {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return this.book.getPrice();
 	}
 
 	public void setPrice(BigDecimal price) {

@@ -90,9 +90,25 @@ public class Order {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(BigDecimal totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+	public void setTotalPrice() {
+        if (orderItems != null && !orderItems.isEmpty()) {
+            BigDecimal totalPrice = BigDecimal.ZERO;
+            
+            for (OrderItem orderItem : orderItems) {
+                BigDecimal itemPrice = orderItem.getPrice();
+                int quantity = orderItem.getQuantity();
+                
+                if (itemPrice != null && quantity > 0) {
+                    BigDecimal itemTotalPrice = itemPrice.multiply(BigDecimal.valueOf(quantity));
+                    totalPrice = totalPrice.add(itemTotalPrice);
+                }
+            }
+            
+            this.totalPrice = totalPrice;
+        } else {
+            this.totalPrice = BigDecimal.ZERO;
+        }
+    }
 
 	public OrderStatus getStatus() {
 		return status;

@@ -1,4 +1,4 @@
-package model;
+package loginMethods;
 
 public class LoginRequest {
     private FormData formData;

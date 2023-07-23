@@ -63,7 +63,7 @@ public class OrderController {
                     order.setUser(updatedOrder.getUser());
                     order.setCreatedDate(updatedOrder.getCreatedDate());
                     order.setModifiedDate(updatedOrder.getModifiedDate());
-                    order.setTotalPrice(updatedOrder.getTotalPrice());
+                    order.setTotalPrice();
                     order.setStatus(updatedOrder.getStatus());
                     order.setOrderItems(updatedOrder.getOrderItems());
                     return orderRepository.save(order);

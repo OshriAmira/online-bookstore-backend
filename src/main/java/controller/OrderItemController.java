@@ -26,6 +26,7 @@ public class OrderItemController {
     
     @GetMapping
     public List<OrderItemDTO> getAllOrderItem() {
+    	System.out.println("check Order Item");
     	List<OrderItem> orderItem = orderItemRepository.findAll();
     	return orderItem.stream()
                 .map(this::convertToDTO)
@@ -66,7 +67,7 @@ public class OrderItemController {
     private OrderItemDTO convertToDTO(OrderItem orderItem) {
         OrderItemDTO dto = new OrderItemDTO();
         dto.setId(orderItem.getId());
-        dto.setOrderID(orderItem.getOrder().getId());
+        dto.setOrderId(orderItem.getOrder().getId());
         dto.setBook(orderItem.getBook().getTitle());
         dto.setQuantity(orderItem.getQuantity());
         dto.setPrice(orderItem.getBook().getPrice());

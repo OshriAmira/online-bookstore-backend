@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class OrderItemDTO {
     
     private Long id;
-    private Long orderID;
+    private Long orderId;
     private String book;
     private Integer quantity;
     private BigDecimal price;
@@ -16,10 +16,10 @@ public class OrderItemDTO {
     }
 
     // Constructor
-	public OrderItemDTO(Long id, Long orderID, String book, Integer quantity, BigDecimal price) {
+	public OrderItemDTO(Long id, Long orderId, String book, Integer quantity, BigDecimal price) {
 		super();
 		this.id = id;
-		this.orderID = orderID;
+		this.orderId = orderId;
 		this.book = book;
 		this.quantity = quantity;
 		this.price = price;
@@ -34,12 +34,12 @@ public class OrderItemDTO {
         this.id = id;
     }
 
-	public Long getOrderID() {
-		return orderID;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setOrderID(Long orderID) {
-		this.orderID = orderID;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 	public String getBook() {

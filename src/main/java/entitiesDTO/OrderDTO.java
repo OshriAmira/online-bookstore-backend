@@ -8,7 +8,7 @@ import model.OrderStatus;
 
 public class OrderDTO {
     private Long id;
-    private Long userID;
+    private Long userId;
     private String userName;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
@@ -23,11 +23,11 @@ public class OrderDTO {
     }
 
     // Constructor
-	public OrderDTO(Long id, Long userID, String userName, LocalDateTime createdDate, LocalDateTime modifiedDate,
+	public OrderDTO(Long id, Long userId, String userName, LocalDateTime createdDate, LocalDateTime modifiedDate,
 			BigDecimal totalPrice, OrderStatus status, List<OrderItemDTO> orderItems) {
 		super();
 		this.id = id;
-		this.userID = userID;
+		this.userId = userId;
 		this.userName = userName;
 		this.createdDate = createdDate;
 		this.modifiedDate = modifiedDate;
@@ -48,12 +48,12 @@ public class OrderDTO {
         this.id = id;
     }
 
-	public Long getUserID() {
-		return userID;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUserID(Long userID) {
-		this.userID = userID;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getUserName() {

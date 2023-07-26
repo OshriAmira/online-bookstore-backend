@@ -79,7 +79,7 @@ public class OrderController {
     protected OrderDTO convertToDTO(Order order) {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setId(order.getId());
-        orderDTO.setUserID(order.getUser().getId());
+        orderDTO.setUserId(order.getUser().getId());
         orderDTO.setUserName(order.getUser().getFirstName() + " " + order.getUser().getLastName() );
         orderDTO.setCreatedDate(order.getCreatedDate());
         orderDTO.setModifiedDate(order.getModifiedDate());        
@@ -104,7 +104,7 @@ public class OrderController {
         OrderItemDTO orderItemDTO = new OrderItemDTO();
         
         orderItemDTO.setId(orderItem.getId());
-        orderItemDTO.setOrderID(orderItem.getOrder().getId());
+        orderItemDTO.setOrderId(orderItem.getOrder().getId());
         orderItemDTO.setBook(orderItem.getBook().getTitle());
         orderItemDTO.setQuantity(orderItem.getQuantity());
         orderItemDTO.setPrice(orderItem.getBook().getPrice());

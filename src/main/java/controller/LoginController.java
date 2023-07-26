@@ -41,7 +41,7 @@ public class LoginController {
     @PostMapping
     @PreAuthorize("permitAll()")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-    	System.out.println("check");
+    	System.out.println("check login");
     	System.out.println(loginRequest);
         String email = loginRequest.getFormData().getEmail();
         String password = loginRequest.getFormData().getPassword();

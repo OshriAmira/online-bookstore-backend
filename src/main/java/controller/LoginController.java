@@ -3,6 +3,7 @@ package controller;
 
 import model.User;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,22 +42,27 @@ public class LoginController {
     @PostMapping
     @PreAuthorize("permitAll()")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-    	System.out.println("check login");
-    	System.out.println(loginRequest);
         String email = loginRequest.getFormData().getEmail();
         String password = loginRequest.getFormData().getPassword();
-        System.out.println(email);
-        System.out.println(password);
         User user = loginRepository.findByEmail(email);
-        System.out.println(user);
         if (user != null && user.getPassword().equals(password)) {
-            // Create a LoginResponse object containing the user's full name and login status
-            LoginResponse response = new LoginResponse(user.getFirstName(), user.getLastName(), true, user.getId());
-            return ResponseEntity.ok(response);
-        } else {
+        	List<String> roleNames = user.getRoles().stream()
+                    .map(role -> role.getName().toString()) // Assuming RoleName is an Enum
+                    .collect(Collectors.toList());
+        	System.out.println(roleNames);
+        	// Create a LoginResponse object containing the user's full name and login status
+        	LoginResponse response = new LoginResponse(
+                    user.getFirstName(),
+                    user.getLastName(),
+                    true,
+                    user.getId(),
+                    roleNames
+                );
+        	return ResponseEntity.ok(response);
+        	} else {
             // Create a LoginResponse object with empty name fields and login status as false
-            LoginResponse response = new LoginResponse("", "", false, 0L);
-            return ResponseEntity.ok(response);
+        		LoginResponse response = new LoginResponse("", "", false, 0L, Collections.emptyList());
+                return ResponseEntity.ok(response);
         }
     }
 
@@ -64,7 +70,6 @@ public class LoginController {
     
     protected UserDTO convertToDTO(User user) {
         UserDTO userDTO = new UserDTO();
-        
         userDTO.setId(user.getId());
         userDTO.setFirstName(user.getFirstName());
         userDTO.setLastName(user.getLastName());

@@ -1,7 +1,7 @@
 package entitiesDTO;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import model.OrderStatus;
@@ -10,8 +10,8 @@ public class OrderDTO {
     private Long id;
     private Long userId;
     private String userName;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private Date createdDate;
+    private Date modifiedDate;
     private BigDecimal totalPrice;
     private OrderStatus status;
     private List<OrderItemDTO> orderItems;
@@ -23,7 +23,7 @@ public class OrderDTO {
     }
 
     // Constructor
-	public OrderDTO(Long id, Long userId, String userName, LocalDateTime createdDate, LocalDateTime modifiedDate,
+	public OrderDTO(Long id, Long userId, String userName, Date createdDate, Date modifiedDate,
 			BigDecimal totalPrice, OrderStatus status, List<OrderItemDTO> orderItems) {
 		super();
 		this.id = id;
@@ -64,19 +64,19 @@ public class OrderDTO {
 		this.userName = userName;
 	}
 
-	public LocalDateTime getCreatedDate() {
+	public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDateTime getModifiedDate() {
+    public Date getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(LocalDateTime modifiedDate) {
+    public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

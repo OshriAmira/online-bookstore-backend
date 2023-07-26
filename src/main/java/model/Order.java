@@ -1,7 +1,7 @@
 package model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,9 +27,9 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
     
-    private LocalDateTime createdDate;
+    private Date createdDate;
     
-    private LocalDateTime modifiedDate;
+    private Date modifiedDate;
     
     private BigDecimal totalPrice;
     
@@ -45,7 +45,7 @@ public class Order {
         // Default constructor for Hibernate
     }
     
-    public Order(User user, LocalDateTime createdDate, LocalDateTime modifiedDate, BigDecimal totalPrice, OrderStatus status, List<OrderItem> orderItems) {
+    public Order(User user, Date createdDate, Date modifiedDate, BigDecimal totalPrice, OrderStatus status, List<OrderItem> orderItems) {
         this.user = user;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
@@ -70,19 +70,19 @@ public class Order {
 		this.user = user;
 	}
 
-	public LocalDateTime getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDateTime createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public LocalDateTime getModifiedDate() {
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(LocalDateTime modifiedDate) {
+	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 

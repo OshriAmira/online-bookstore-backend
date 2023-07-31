@@ -49,7 +49,7 @@ public class Order {
         this.user = user;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-        this.totalPrice = totalPrice;
+        this.totalPrice = calculateTotalPrice(orderItems);
         this.status = status;
         this.orderItems = orderItems;
     }
@@ -131,5 +131,23 @@ public class Order {
 		return "Order [id=" + id + ", user=" + user + ", createdDate=" + createdDate + ", modifiedDate=" + modifiedDate
 				+ ", totalPrice=" + totalPrice + ", status=" + status + ", orderItems=" + orderItems + "]";
 	}
+	
+
+	public BigDecimal calculateTotalPrice(List<OrderItem> orderItems) {
+	    BigDecimal total = BigDecimal.ZERO;
+	    for (OrderItem orderItem : orderItems) {
+	        BigDecimal quantity = BigDecimal.valueOf(orderItem.getQuantity());
+	        BigDecimal price = orderItem.getPrice();
+	        total = total.add(quantity.multiply(price));
+	    }
+	    return total;
+	}
+
+
     
 }
+
+
+
+
+

@@ -71,6 +71,7 @@ public class OrderItemController {
         dto.setBook(orderItem.getBook().getTitle());
         dto.setQuantity(orderItem.getQuantity());
         dto.setPrice(orderItem.getBook().getPrice());
+        dto.setImage(orderItem.getBook().getImage());
         return dto;
     }
 

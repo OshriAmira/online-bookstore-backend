@@ -9,6 +9,7 @@ public class OrderItemDTO {
     private String book;
     private Integer quantity;
     private BigDecimal price;
+    private String image;
     // Constructors, getters, and setters
 
     // Default constructor
@@ -16,13 +17,14 @@ public class OrderItemDTO {
     }
 
     // Constructor
-	public OrderItemDTO(Long id, Long orderId, String book, Integer quantity, BigDecimal price) {
+	public OrderItemDTO(Long id, Long orderId, String book, Integer quantity, BigDecimal price, String image) {
 		super();
 		this.id = id;
 		this.orderId = orderId;
 		this.book = book;
 		this.quantity = quantity;
 		this.price = price;
+		this.image = image;
 	}
 
     // Getters and setters
@@ -65,4 +67,14 @@ public class OrderItemDTO {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+    
+    
 }

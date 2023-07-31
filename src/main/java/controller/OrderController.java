@@ -2,7 +2,6 @@ package controller;
 
 
 import java.util.List;
-import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -86,11 +85,12 @@ public class OrderController {
         orderDTO.setStatus(order.getStatus());
         orderDTO.setOrderItems(convertToOrderItemDTOs(order.getOrderItems()));
         
-        BigDecimal totalPrice = BigDecimal.ZERO;
-        for (OrderItem orderItem : order.getOrderItems()) {
-            totalPrice = totalPrice.add(orderItem.getBook().getPrice());
-        }
-        orderDTO.setTotalPrice(totalPrice);
+//        BigDecimal totalPrice = BigDecimal.ZERO;
+//        for (OrderItem orderItem : order.getOrderItems()) {
+//            totalPrice = totalPrice.add(orderItem.getBook().getPrice());
+//        }
+//        orderDTO.setTotalPrice(totalPrice);
+        orderDTO.setTotalPrice(order.getTotalPrice());
         return orderDTO;
     }
     
@@ -108,6 +108,7 @@ public class OrderController {
         orderItemDTO.setBook(orderItem.getBook().getTitle());
         orderItemDTO.setQuantity(orderItem.getQuantity());
         orderItemDTO.setPrice(orderItem.getBook().getPrice());
+        orderItemDTO.setImage(orderItem.getBook().getImage());
         return orderItemDTO;
     }
     

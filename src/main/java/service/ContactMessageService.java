@@ -1,7 +1,7 @@
 package service;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,6 +29,16 @@ public class ContactMessageService {
     
     public void deleteContactMessage(Long id) {
     	messageRepository.deleteById(id);
+    }
+    
+    public ContactMessage updateMessageStatus(Long id, boolean newStatus) {
+        Optional<ContactMessage> optionalMessage = messageRepository.findById(id);
+        if (optionalMessage.isPresent()) {
+            ContactMessage message = optionalMessage.get();
+            message.setStatus(newStatus);
+            return messageRepository.save(message);
+        }
+        return null; // Or throw an exception if the message with the given id does not exist
     }
     
     

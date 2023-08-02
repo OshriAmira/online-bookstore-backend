@@ -29,7 +29,8 @@ public class ContactMessage {
     @Column(name = "message", nullable = false)
     private String message;
 
-    
+    @Column(name = "status", nullable = false)
+    private boolean status;
     
     // Constructors, getters, and setters
     
@@ -38,7 +39,7 @@ public class ContactMessage {
     }
 	
 	public ContactMessage(Long id, String firstName, String lastName, String phoneNumber, String email,
-			String message) {
+			String message, boolean status ) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -46,6 +47,7 @@ public class ContactMessage {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.message = message;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -96,14 +98,19 @@ public class ContactMessage {
 		this.message = message;
 	}
 
+	public boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "ContactMessage [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
-				+ phoneNumber + ", email=" + email + ", message=" + message + "]";
+				+ phoneNumber + ", email=" + email + ", message=" + message + ", status=" + status + "]";
 	}
-    
-    
-
 
 }
 

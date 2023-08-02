@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import model.ContactMessage;
 import repository.ContactMessageRepository;
+import service.ContactMessageService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,9 +26,11 @@ import repository.ContactMessageRepository;
 public class ContactMessageController {
 	
     private final ContactMessageRepository messageRepository;
+    private final ContactMessageService messageService; 
 
-    public ContactMessageController(ContactMessageRepository messageRepository) {
+    public ContactMessageController(ContactMessageRepository messageRepository, ContactMessageService messageService) {
         this.messageRepository = messageRepository;
+        this.messageService = messageService;
     }
     
     @GetMapping
@@ -48,6 +52,18 @@ public class ContactMessageController {
         if (optionalContactMessage.isPresent()) {
         	ContactMessage contactMessage = optionalContactMessage.get();
             return ResponseEntity.ok(contactMessage);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PutMapping("/{id}")
+    @PreAuthorize("permitAll()")
+    public ResponseEntity<ContactMessage> updateMessageStatus(@PathVariable Long id, @RequestBody boolean newStatus) {
+    	System.out.println ("status IN");
+        ContactMessage updatedMessage = messageService.updateMessageStatus(id, newStatus);
+        if (updatedMessage != null) {
+            return ResponseEntity.ok(updatedMessage);
         } else {
             return ResponseEntity.notFound().build();
         }
